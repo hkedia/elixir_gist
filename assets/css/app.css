@@ -49,11 +49,22 @@ form input[type="text"]:focus {
 }
 
 .textarea {
-  @apply bg-emDark-dark font-brand font-regular text-white text-xs border-white h-[300px] resize-none rounded-none rounded-b-md mt-0;
+  @apply bg-emDark-dark font-brand font-regular text-white text-xs border-white h-[300px] resize-none rounded-br-md;
   border-top: none;
+  border-left: none;
 }
 
 .textarea:focus {
+  @apply focus:outline-none focus:border-white focus:ring-0;
+}
+
+.line-numbers {
+  @apply border border-white rounded-bl-md font-brand font-regular text-xs text-emDark-light bg-emDark-dark h-[300px] w-[54px] text-right overflow-hidden resize-none;
+  border-right: none;
+  border-top: none;
+}
+
+.line-numbers:focus {
   @apply focus:outline-none focus:border-white focus:ring-0;
 }
 
