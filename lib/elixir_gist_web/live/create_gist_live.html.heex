@@ -3,12 +3,13 @@
     Instantly share Elixir code, notes, and snippets.
   </h1>
 </div>
-<.form for={@form}>
+<.form for={@form} phx-submit="create" phx-change="validate">
   <div class="justify-center px-28 w-full space-y-4 mb-10">
     <.input
       field={@form[:description]}
       placeholder="Gist description..."
       autocomplete="off"
+      phx-debounce="blur"
     />
     <div>
       <div class="flex p-2 items-center bg-emDark rounded-t-md border">
@@ -17,6 +18,7 @@
             field={@form[:name]}
             placeholder="Filename including extension..."
             autocomplete="off"
+            phx-debounce="blur"
           />
         </div>
       </div>
@@ -26,10 +28,13 @@
         placeholder="Insert code..."
         spellcheck="false"
         autocomplete="off"
+        phx-debounce="blur"
       />
     </div>
     <div class="flex justify-end">
-      <.button class="create-button">Create gist</.button>
+      <.button class="create-button" phx-disable-with="Creating gist...">
+        Create gist
+      </.button>
     </div>
   </div>
 </.form>
