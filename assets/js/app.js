@@ -26,7 +26,7 @@ let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("
 
 function updateLineNumbers(value) {
   const lineNumberText = document.querySelector("#line-numbers")
-  
+
   if (!lineNumberText) return;
 
   const lines = value.split("\n")
@@ -109,6 +109,21 @@ Hooks.UpdateLineNumbers = {
     updateLineNumbers(this.el.value)
   }
 };
+
+Hooks.CopyToClipboard = {
+  mounted() {
+    this.el.addEventListener("click", (e) => {
+      const textToCopy = this.el.getAttribute("data-clipboard-gist")
+      if (textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          console.log("Gist copied to clipboard")
+        }).catch(err => {
+          console.error("Failed to copy text", err)
+        })
+      }
+    })
+  }
+}
 
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
