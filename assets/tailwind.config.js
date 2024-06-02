@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       colors: {
         brand: "#FD4F00",
+        emSyntax: "#0D1117",
         emDark: {
           dark: "#010101",
           DEFAULT: "#3C3B3B",
