@@ -4,12 +4,6 @@ defmodule ElixirGistWeb.GistFormComponent do
   alias ElixirGist.{Gists, Gists.Gist}
 
   def mount(socket) do
-    socket =
-      assign(
-        socket,
-        form: to_form(Gists.change_gist(%Gist{}))
-      )
-
     {:ok, socket}
   end
 
@@ -37,8 +31,8 @@ defmodule ElixirGistWeb.GistFormComponent do
             </div>
             <div id="gist-wrapper" class="flex w-full" phx-update="ignore">
               <textarea id="line-numbers" class="line-numbers" readonly>
-          <%= "1\n" %>
-        </textarea>
+                <%= "1\n" %>
+              </textarea>
               <.input
                 type="textarea"
                 id="gist-textarea"
