@@ -27,23 +27,23 @@ let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("
 let Hooks = {};
 Hooks.UpdateLineNumbers = {
   mounted() {
-    const lineNumberText = document.querySelector("#line-numbers");
+    const lineNumberText = document.querySelector("#line-numbers")
 
     this.el.addEventListener("input", () => {
       this.updateLineNumbers()
     })
 
     this.el.addEventListener("scroll", () => {
-      lineNumberText.scrollTop = this.el.scrollTop;
+      lineNumberText.scrollTop = this.el.scrollTop
     })
 
     this.el.addEventListener("keydown", (e) => {
       if (e.key == "Tab") {
-        e.preventDefault();
-        let start = this.el.selectionStart;
-        let end = this.el.selectionEnd;
-        this.el.value = this.el.value.substring(0, start) + "\t" + this.el.value.substring(end);
-        this.el.selectionStart = this.el.selectionEnd = start + 1;
+        e.preventDefault()
+        let start = this.el.selectionStart
+        let end = this.el.selectionEnd
+        this.el.value = this.el.value.substring(0, start) + "\t" + this.el.value.substring(end)
+        this.el.selectionStart = this.el.selectionEnd = start + 1
       }
     })
 
@@ -59,9 +59,9 @@ Hooks.UpdateLineNumbers = {
     const lineNumberText = document.querySelector("#line-numbers")
     if (!lineNumberText) return;
 
-    const lines = this.el.value.split("\n");
-    const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
-    lineNumberText.value = numbers;
+    const lines = this.el.value.split("\n")
+    const numbers = lines.map((_, index) => index + 1).join("\n") + "\n"
+    lineNumberText.value = numbers
   }
 };
 
