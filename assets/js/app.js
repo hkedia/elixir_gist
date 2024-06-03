@@ -24,8 +24,8 @@ import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 
-function updateLineNumbers(value) {
-  const lineNumberText = document.querySelector("#line-numbers")
+function updateLineNumbers(value, element_id = "#line-numbers") {
+  const lineNumberText = document.querySelector(element_id)
 
   if (!lineNumberText) return;
 
@@ -44,9 +44,9 @@ Hooks.Highlight = {
     if (name && codeBlock) {
       codeBlock.className = codeBlock.className.replace(/language-\S+/g, "")
       codeBlock.classList.add(`language-${this.getSyntaxType(name)}`)
-      trimmed = this.trimCodeBlock(codeBlock)
-      hljs.highlightElement(trimmed)
-      updateLineNumbers(trimmed.textContent)
+      // trimmed = this.trimCodeBlock(codeBlock)
+      hljs.highlightElement(codeBlock)
+      updateLineNumbers(codeBlock.textContent, "#syntax-numbers")
     }
   },
 
@@ -68,15 +68,15 @@ Hooks.Highlight = {
     }
   },
 
-  trimCodeBlock(codeBlock) {
-    const lines = codeBlock.textContent.split("\n")
-    if (lines.length > 2) {
-      lines.shift()
-      lines.pop()
-    }
-    codeBlock.textContent = lines.join("\n")
-    return codeBlock
-  }
+  // trimCodeBlock(codeBlock) {
+  //   const lines = codeBlock.textContent.split("\n")
+  //   if (lines.length > 2) {
+  //     lines.shift()
+  //     lines.pop()
+  //   }
+  //   codeBlock.textContent = lines.join("\n")
+  //   return codeBlock
+  // }
 }
 
 Hooks.UpdateLineNumbers = {
@@ -120,6 +120,19 @@ Hooks.CopyToClipboard = {
         }).catch(err => {
           console.error("Failed to copy text", err)
         })
+      }
+    })
+  }
+}
+
+Hooks.ToggleEdit = {
+  mounted() {
+    this.el.addEventListener("click", () => {
+      let edit = document.getElementById("edit-section")
+      let syntax = document.getElementById("syntax-section")
+      if (edit && syntax) {
+        edit.style.display = "block";
+        syntax.style.display = "none";
       }
     })
   }
