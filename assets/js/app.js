@@ -44,9 +44,9 @@ Hooks.Highlight = {
     if (name && codeBlock) {
       codeBlock.className = codeBlock.className.replace(/language-\S+/g, "")
       codeBlock.classList.add(`language-${this.getSyntaxType(name)}`)
-      trimmed = this.trimCodeBlock(codeBlock)
-      hljs.highlightElement(trimmed)
-      updateLineNumbers(trimmed.textContent)
+      // trimmed = this.trimCodeBlock(codeBlock)
+      hljs.highlightElement(codeBlock)
+      updateLineNumbers(codeBlock.textContent)
     }
   },
 
@@ -68,15 +68,15 @@ Hooks.Highlight = {
     }
   },
 
-  trimCodeBlock(codeBlock) {
-    const lines = codeBlock.textContent.split("\n")
-    if (lines.length > 2) {
-      lines.shift()
-      lines.pop()
-    }
-    codeBlock.textContent = lines.join("\n")
-    return codeBlock
-  }
+  // trimCodeBlock(codeBlock) {
+  //   const lines = codeBlock.textContent.split("\n")
+  //   if (lines.length > 2) {
+  //     lines.shift()
+  //     lines.pop()
+  //   }
+  //   codeBlock.textContent = lines.join("\n")
+  //   return codeBlock
+  // }
 }
 
 Hooks.UpdateLineNumbers = {
