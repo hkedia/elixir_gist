@@ -6,18 +6,22 @@ defmodule ElixirGistWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
+    <div class="em-gradient flex flex-col items-center justify-center">
+      <h1 class="font-brand font-bold text-3xl text-white py-2">
         Register for an account
-        <:subtitle>
-          Already registered?
-          <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
-            Log in
-          </.link>
-          to your account now.
-        </:subtitle>
-      </.header>
-
+      </h1>
+      <h3 class="font-brand font-bold text-l text-white">
+        Already registered?
+        <.link
+          navigate={~p"/users/log_in"}
+          class="font-semibold text-brand hover:underline text-emLavender-dark"
+        >
+          Sign in
+        </.link>
+        to your account now.
+      </h3>
+    </div>
+    <div class="mx-auto max-w-sm">
       <.simple_form
         for={@form}
         id="registration_form"

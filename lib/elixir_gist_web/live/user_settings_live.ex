@@ -5,12 +5,16 @@ defmodule ElixirGistWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center">
-      Account Settings
-      <:subtitle>Manage your account email address and password settings</:subtitle>
-    </.header>
+    <div class="em-gradient flex flex-col items-center justify-center">
+      <h1 class="font-brand font-bold text-3xl text-white py-2">
+        Account Settings
+      </h1>
+      <h3 class="font-brand font-bold text-l text-white">
+        Manage your account email address and password settings
+      </h3>
+    </div>
 
-    <div class="space-y-12 divide-y">
+    <div class="mx-auto max-w-sm">
       <div>
         <.simple_form
           for={@email_form}
