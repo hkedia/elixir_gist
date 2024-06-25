@@ -19,22 +19,22 @@ defmodule ElixirGistWeb.UserLoginLive do
       </h3>
     </div>
     <div class="mx-auto max-w-sm">
-      <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
-
-        <:actions>
+      <.form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <.input field={@form[:password]} type="password" placeholder="Password" required />
+        <div class="flex item-scenter justify-between py-4">
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
-          <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
+          <.link
+            href={~p"/users/reset_password"}
+            class="text-m text_brand text-emDark-light font-semibold hover:underline"
+          >
             Forgot your password?
           </.link>
-        </:actions>
-        <:actions>
-          <.button phx-disable-with="Logging in..." class="w-full">
-            Log in <span aria-hidden="true">→</span>
-          </.button>
-        </:actions>
-      </.simple_form>
+        </div>
+        <.button phx-disable-with="Signing in..." class="create_button w-full">
+          Sign in <span aria-hidden="true">→</span>
+        </.button>
+      </.form>
     </div>
     """
   end

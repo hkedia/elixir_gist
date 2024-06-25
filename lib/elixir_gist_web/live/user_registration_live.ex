@@ -22,7 +22,7 @@ defmodule ElixirGistWeb.UserRegistrationLive do
       </h3>
     </div>
     <div class="mx-auto max-w-sm">
-      <.simple_form
+      <.form
         for={@form}
         id="registration_form"
         phx-submit="save"
@@ -35,13 +35,14 @@ defmodule ElixirGistWeb.UserRegistrationLive do
           Oops, something went wrong! Please check the errors below.
         </.error>
 
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
-
-        <:actions>
-          <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
-        </:actions>
-      </.simple_form>
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <.input field={@form[:password]} type="password" placeholder="Password" required />
+        <div class="py-6">
+          <.button phx-disable-with="Creating account..." class="create_button w-full">
+            Create an account
+          </.button>
+        </div>
+      </.form>
     </div>
     """
   end
